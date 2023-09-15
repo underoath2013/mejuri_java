@@ -16,10 +16,7 @@ public class MejuriTest {
     private static final By searchIcon = By.cssSelector("button[aria-label='Search']");
     private static final By searchInput = By.cssSelector("[data-testid='main-search-input']");
     private static final By searchResult = By.cssSelector("[data-testid='product-card-title']");
-//    private static final By productSize = By.cssSelector("[data-testid='product-size-message']");
-//    private static final By ringLogo = By.cssSelector(".styled__Container-sc-aw9czy-0.boNuA-D");
-    private static final By wishlistButton = By.cssSelector("[data-testid='icon-wishlist-btn']");
-
+    private  static  final  By wishlistButton = By.cssSelector("[data-testid=\"icon-whishlist-btn\"]");
     @BeforeAll
     public static void setUp() {
         Selenide.open("https://mejuri.com/world/en");
@@ -28,21 +25,17 @@ public class MejuriTest {
 
     @Test
     public void testMejuri() {
-        $(navBarUserButton).click();
-        $(signInButton).click();
-        // Данного юзера заранее зарегистрировали
-        $(emailInput).setValue("eeo24667@omeie.com");
-        $(passwordInput).setValue("Qq123456");
-        $(continueButton).click();
-        $(birthdayInput).setValue("12/12/2000");
-        $(saveBirthdayButton).click();
-        $(searchIcon).click(); // не находит вот этот элемент и не кликает его
-        $(searchInput).setValue("Honey Mini Signet").click();
-        $(searchResult).shouldHave(text("Honey Signet"));
-        $(searchResult).click();
-        // Ждем перехода на страницу с товаром
-//        $(productSize).shouldHave(text("Ring"), text("Size"));
-//        $(ringLogo).shouldHave(text("Honey Mini Signet"));
-        $(wishlistButton).click();
+        $(navBarUserButton).click(); // click on user icon
+        $(signInButton).click(); // click on sing in button
+        $(emailInput).setValue("eeo24667@omeie.com"); // credentials were registered before tests, input email
+        $(passwordInput).setValue("Qq123456"); // input password
+        $(continueButton).click(); // click on continue button
+        $(birthdayInput).setValue("12/12/2000"); // input birthday
+        $(saveBirthdayButton).click(); // click on save birthday button
+        $(searchIcon).click(); // click on search icon in navigation bar
+        $(searchInput).setValue("Honey Mini Signet").click(); // input search word
+        $(searchResult).shouldHave(text("Honey Signet")); // check that search result is valid
+        $(searchResult).click(); // click on search result
+        $(wishlistButton).click(); // click on wishlist icon
     }
 }
